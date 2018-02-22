@@ -1,0 +1,318 @@
+"use strict";
+
+var _DEBUG = true;
+const path = require('path');
+const {ipcRenderer} = require('electron');
+const crypto = require("crypto-js");
+const fileHandler = require('./resources/js/fileHandler.js');
+
+let dataToSave = {};
+const admin = sessionStorage.getItem('admin') == '1' ? true : false;
+if(_DEBUG) console.log(admin);
+const user = 'admin';
+const pass = '1234';
+
+let tipos = { 'c' : "Coagulación" , 'm' : "Medulograma", "h" : "Hemograma" }
+
+// --- LOGIN MODAL ---
+
+// Acá va la logica del login
+const openLoginModal = () =>{
+  $('#loginModal').modal('show');
+
+  //Se encarga de verificar el ADMIN
+  $('#loginBtn').on('click', () => {
+
+    const form = document.getElementById("needs-validation");
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      form.classList.add("was-validated");
+
+      const userName = document.getElementById('userName');
+      const password = document.getElementById('password');
+
+      if(!checkEquals(userName.value, user) && userName.value.length > 0){
+        event.preventDefault();
+        event.stopPropagation();
+        userName.setCustomValidity("Usuario incorrecto");
+        $('#invalidUser').text('Usuario incorrecto');
+      }
+
+      if(!checkEquals(password.value, pass) && password.value.length > 0){
+        event.preventDefault();
+        event.stopPropagation();
+        password.setCustomValidity("Contraseña incorrecta");
+        $('#invalidPass').text('Contraseña incorrecta');
+      }
+
+      sessionStorage.setItem('admin', 1);
+
+    }, false);
+
+  });
+
+  // Entra en modo visitante
+  $('#visitBtn').on('click', () =>{
+    sessionStorage.setItem('admin', 0);
+    document.getElementById("mainContainer").style.display = "block"; // Tiene que volver a como estaba. Cuando esta login esta en none
+  })
+};
+
+// En caso de que no haya admin se abre.
+if(!sessionStorage.getItem('admin')){
+  document.getElementById("mainContainer").style.display = "none";
+  openLoginModal();
+};
+
+const checkEquals = (arg1, arg2) =>{
+  return arg1 == arg2;
+}
+
+
+
+// --- MODAL ---
+
+//Abre modal. Dependiendo del ID carga el src
+  $('.modalBtn').on('click', (event) => {
+
+    const name = event.target.id;
+    dataToSave['tipo'] = name[0];
+    openModal(name);
+    $('#modalLabel').text('Nuevo estudio');
+  });
+
+
+  // Termino de abrir el modal. Acá podría ir la carga de data.
+  $('#formModal').on('shown.bs.modal', () => {
+
+    // Muestra datos en caso de que haya.
+    if(Object.keys(dataToSave).length > 1){
+      $.each($("#modalContent").contents().find(".datos"), (index, value) => {
+        value.value = dataToSave[value.id];
+          if(!admin){
+            value.readOnly = true;
+          }
+      });
+      $("#modalContent").contents().find("#fechaCreacion").html(dataToSave['fechaCreacion']);
+      $("#saveModalBtn").html("Guardar");
+       if(!admin){
+            $("#saveModalBtn").prop("disabled","true");
+        }else{
+          $("#saveModalBtn").prop("disabled","false");
+        }
+    }else{
+      let fecha = new Date();
+      let _aux = fecha.getDate() + '/' + (fecha.getMonth() + 1) + '/' + fecha.getFullYear();
+      $("#modalContent").contents().find("#fechaCreacion").html( _aux );
+      dataToSave['fechaCreacion'] = _aux;
+      dataToSave['id'] = fecha.getTime().toString(); 
+      $("#saveModalBtn").html("Crear");
+
+    }
+
+    
+
+
+    //Bindeo listener a la calse datos.
+    $("#modalContent").contents().find(".datos").bind("change keyup", (event) => {
+      const id = event.target.id;
+      const val = event.target.value;
+      dataToSave[id] = val;
+    });
+
+    
+    /*
+      //Bindeo pickdate
+      $("#modalContent").contents().find("#fecha").bind("focus", (event) => {
+        $(event.target).pickdate({
+          today: 'Hoy',
+        });
+      });
+    */
+      // judy no queria el pickdate
+      $("#modalContent").contents().find("#fecha").bind("keypress", (event) => {
+        let text = event.target.value;
+        if ( (text.length == 2 || text.length == 5) && event.keyCode !== 46) event.target.value += '/';
+      });
+
+  });
+
+  const openModal = (name) =>{
+    $('#formModal').modal('show');
+    $('#modalContent').attr({src : decodeURIComponent(path.join(__dirname,'resources','html', name+'.html'))});
+    resizeModal("#modalContent");
+  };
+
+
+//Cierre de modal
+
+  //Boton para confirmar
+  $('#saveModalBtn').on('click', () => {
+
+    //Manda un evento al main, para que haga lo que quiera con los datos.
+    //ipcRenderer.send('saveData', dataToSave);
+    fileHandler.saveDataToDB(dataToSave);
+    $('#formModal').modal('hide')
+  });
+
+  //Una vez que se cierra, limpio el JSON
+  $('#formModal').on('hidden.bs.modal', () => {
+    dataToSave = {};
+  });
+
+
+
+// --- RESIZE ---
+
+
+//Listener de resize
+  window.addEventListener('resize', () => {
+    resizeModal('#modalContent'); // Me da el alto cada vez que se hace resize
+  });
+
+// Ajusta el modal
+  const resizeModal = (modal) =>{
+    const scale = 0.8;
+    const winH = $(window).height();
+    if(_DEBUG) console.log(winH);
+    $(modal).height(winH * scale);
+
+  };
+
+
+
+
+// --- Ver / Editar ---
+
+  //Pide datos para abrir modal.
+  $('#fileInput').on('change', (event) => {
+    const file = event.target.files[0];
+
+    //Le pide al Main los datos
+    ipcRenderer.send('requestData', file['path']);
+
+    ipcRenderer.on('getData', (event, data) =>{
+      dataToSave = data;
+      openModal(data["tipo"]);
+    })
+
+  });
+
+
+
+/* navegador index */
+//principal
+$("#showMenuPrincipal").bind("click", function(){
+  $(".menu_removible").hide();
+  $(".menu_ppal").show();
+});
+
+
+ipcRenderer.on('getData', (event, data) =>{
+  dataToSave = data;
+  openModal(tipos[data["tipo"]].toLowerCase().replace('ó','o'));
+})
+
+ipcRenderer.on('refreshPacientes', (event, data) =>{
+
+  $("#f_"+data).remove();
+  let _return = fileHandler.getPerson("");
+  for (let i=0; i < _return.length; i++) {
+    $("#tabla-pacientes").append('<tr class="tr_paciente" data-name="'+_return[i]+'"><td>'+_return[i]+'</td></tr>');
+  }
+  $(".tr_paciente").bind("click", function(){
+      $(".tr_paciente").removeClass("table-light");
+      getItem($(this).data('name'));
+      $(this).addClass('table-light');
+  });
+})
+//buscador
+
+function getItem(name){
+
+  $(".tr_estudios").remove();
+  let rt = fileHandler.getStudios(name);
+  for(let j=0; j < rt.length ; j++) {
+    $("#tabla-estudios").append('<tr class="table-light tr_estudios" id="f_'+rt[j].id+'" data-name="'+name+'" data-id="'+rt[j].id+'"><td>'+tipos[rt[j].estudio]+'</td><td>'+rt[j].creacion+'</td></tr>')
+  }
+  $("#content-tabla-estudios").css("opacity","1");
+
+  $(".tr_estudios").bind("click", function(){
+
+    let path = './resources/'+$(this).data('id')+'.json';
+    let key = $(this).data('name');
+    ipcRenderer.send('requestData', { "path" : path, "key" : key});
+    
+  });
+
+  
+
+    
+}
+
+$("#showMenuBuscador").bind("click", function(){
+  $(".menu_removible").hide();
+  $(".menu_buscador").show();
+
+  $("#buscador").focus();
+  $(".tr_paciente").remove();
+  let _return = fileHandler.getPerson($(this).val());
+  for (let i=0; i < _return.length; i++) {
+    $("#tabla-pacientes").append('<tr class="tr_paciente" data-name="'+_return[i]+'"><td>'+_return[i]+'</td></tr>');
+  }
+  $(".tr_paciente").bind("click", function(){
+      $(".tr_paciente").removeClass("table-light");
+      getItem($(this).data('name'));
+      $(this).addClass('table-light');
+  });
+  
+});
+
+$("#buscador").bind('input propertychange', function() {
+
+  var searchText = $(this).val().toLowerCase();
+  $("#content-tabla-estudios").css("opacity","0");
+  $(".tr_estudios").remove();
+  $(".tr_paciente").remove();
+
+  let _return = fileHandler.getPerson($(this).val());
+  let i=0;
+  for (i ; i < _return.length; i++) {
+    $("#tabla-pacientes").append('<tr class=" tr_paciente" data-name="'+_return[i]+'"><td>'+_return[i]+'</td></tr>'); 
+  }
+  $(".tr_paciente").bind("click", function(){
+      $(".tr_paciente").removeClass("table-light");
+      getItem($(this).data('name'));
+      $(this).addClass('table-light');
+  });
+
+  if(i == 0) {
+    $("#tabla-pacientes").append('<tr class="tr_paciente" data-name="'+_return[i]+'"><td>No se encontraron resultados... </td></tr>'); 
+  }
+  /*
+  // Show only matching TR, hide rest of them
+  let count = 0;
+  $.each($("#tabla-pacientes tr"), function() {
+    if($(this).text().toLowerCase().indexOf(searchText) === -1 || count > 100)
+      $(this).hide();
+    else
+      $(this).show();   
+
+    count++;             
+  });
+  */
+
+}); 
+
+
+
+
+$(".menu_removible").hide();
+$(".menu_ppal").show();
+$("#content-tabla-estudios").css("opacity","0");
+
+

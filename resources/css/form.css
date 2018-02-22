@@ -1,0 +1,146 @@
+
+.tabla-datos {
+  background-color: #f4f4f4;
+  padding: 2%;
+  margin-bottom: 3%;
+  margin-top: 3%
+}
+
+
+.tabla-datos-left {
+	padding-right: 25% !important;
+}
+
+.form-title {
+    font-size: 2em;
+    /* font-weight: bold;  NO ESTA IMPRIMIENDO LOS BOLD. ANDA A SABER QUE PASA */
+    margin-bottom: 2%;
+}
+
+.form-header {
+  padding: 3%;
+}
+
+.header-izquierda {
+  text-align: left;
+  padding-top: 1em;
+}
+
+.header-centro {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+#header-img{
+  max-height: 4rem;
+}
+
+.header-derecha {
+  text-align: right;
+}
+
+.form-container {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.modal-lg-form{
+  max-width: 80rem;
+}
+
+#fechaCreacion {
+  float: right;
+}
+
+.input-group{
+  	margin: 0.5rem 0rem 0.5rem 0rem!important;
+}
+.input-group-addon{
+  width: 30%;
+  justify-content: flex-start;
+  font-size: 0.9rem!important;
+}
+.datos{
+    font-size: 0.9rem!important;
+}
+.inputs-cortos{
+  margin-left: 3rem!important;
+}
+.content-table{
+  display: inline-block;
+    overflow-y: scroll;
+    max-height:70vh;
+    width: 100%;
+}
+
+.pull-left{
+  display: flex;
+  justify-content: flex-start!important;
+  -webkit-justify-content: flex-start!important;
+}
+.pull-right{
+  display: flex;
+  justify-content: flex-end!important;
+  -webkit-justify-content: flex-end!important;
+}
+
+
+.icon-image{
+  height: 2.8em;
+}
+.border-none{
+  border: none;
+}
+.input-buscador{
+   display: inline-flex;
+   max-width: 30%;
+   margin-left: 1.5rem;
+}
+.tr_paciente, .tr_estudios{
+  cursor: pointer;
+}
+.menu_removible{
+  margin: auto;
+}
+.titulos-cortos{
+  margin-left :1.7rem!important;
+  max-width: 2%;
+}
+.titulos-fibro{
+  margin-left :2rem!important;
+  max-width: 12%;
+}
+
+.titulos-hierro{
+  margin-left :2rem!important;
+  max-width: 12%;
+}
+
+.preTestigos{
+  max-width: 34% !important;
+}
+.testigos{
+  max-width: 6% !important;
+}
+
+.inputRightF{
+  max-width: 29% !important;
+}
+
+.nombreRightF{
+  max-width: 3% !important;
+}
+
+.comentarios, .comentarios-cortos{
+  padding : 0.3rem 0.4rem !important;
+  margin-top: 0.8rem!important;
+  resize: none;
+}
+
+.frotis{
+  max-width: 70%;
+  margin-bottom: 3%;
+}
+::-webkit-scrollbar{width:3px;transition:all 1s;}
+::-webkit-scrollbar-track{-webkit-border-radius:0px;border-radius:0px;}
+::-webkit-scrollbar-thumb{-webkit-border-radius:0px;border-radius:0px;background:#9c27b0;}
+::-webkit-scrollbar-thumb:window-inactive{background:#e1bee7;}

@@ -1,0 +1,151 @@
+/*!
+ * print.css v1.0.0
+ * http://printstylesheet.com/
+ *
+ * Copyright (c) 2011 David Bushell
+ * Dual licensed under the BSD or MIT licenses: http://printstylesheet.com/license.txt
+
+ * Author: David Bushell
+ * http://dbushell.com/
+ */
+
+/* use a media query to limit the CSS to only print devices, like a printer */
+@media only print
+{
+	/* hide every element within the body */
+	header {display:none;}
+	content {display:none;}
+	comments {display:none;}
+	nav {display:none;}
+	footer {display:none;}
+
+ 	.no-printeable{
+		display: none;
+	}
+	#tablaMain,.form-header, .tabla-datos{
+		padding: 0px!important;
+		margin: 0px!important;
+	}
+	.form-title{
+		margin: none!important;
+	}
+	.form-control{
+		/* font-size: 1rem!important; */
+		margin: 0px!important;
+		height: 2%!important;
+		padding: none!important;
+		border-width: 0px!important; /* SACA LAS LINEAS DE LOS INPUTS */
+		color: rgba(0, 0, 0, 0.87)!important;
+
+	}
+
+	.small-font{
+		font-size: 10px!important;
+		padding-right: 0px;
+	}
+
+	.comentarios{
+		height: 2%!important;
+		padding: 0px!important
+		/* margin-top: 7px!important; */
+	}
+	.comentarios-dos-r{
+		height: 5%!important;
+		margin-top: 15px!important;
+		margin-bottom: 15px!important;
+		margin-left: 0px!important;
+		resize: none;
+		padding: 0px!important;
+		padding-top: 15px!important;
+	}
+	.comentarios-cortos{
+		height: 9%!important;
+		padding: 0px!important;
+		margin-left: 10px!important;
+	}
+	.titulo-comentarios-cortos{
+		padding-bottom: 75px!important;
+	}
+	.inputs-cortos{
+	  margin-left: 4rem!important;
+	}
+
+	::placeholder {
+	  font-size: 0em;
+	}
+
+  /* body * {
+    visibility:hidden;
+  }
+  #modalFormulario, #modalFormulario * {
+    visibility:visible;
+  }
+  #modalFormulario {
+    position:absolute;
+    left:0;
+    top:0;
+  } */
+
+	@page {
+		size: A4;
+		margin: 1cm;
+		font-size: 10px;
+
+	}
+	/* @media screen {
+	  #modalFormulario {
+	      display: none;
+	  }
+	} */
+
+	.big-col{
+		width: 170%;
+	}
+	.testigos{
+		padding-left: 0px!important;
+		margin-right: 100px!important;
+		width: 10%;
+	}
+	.no-testigos{
+		margin-right: 50px!important;
+	}
+	.titulos-cortos{
+		margin-left: 0px!important;
+		margin-right: 17px!important;
+	}
+	.dos-col{
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+		display: flex;
+		flex-wrap: nowrap;
+	}
+
+	#formHeader, .tabla-header{
+  	display: flex;
+		flex-wrap: nowrap;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.87)!important;
+	}
+	hr{
+		color:  rgba(0, 0, 0, 0.87)!important;
+	}
+	#tablaMain, .tabla-main{
+		padding: none!important;
+	}
+	.tabla-box{
+		border: 1px solid black;
+	}
+	.tabla-datos{
+		padding-left: 2%!important;
+		padding-right:2%!important;
+		padding-bottom: 2%!important;
+	}
+	.titulos-fibro{
+    margin-right: 3rem!important;;
+	}
+
+	.header-centro {
+	  margin-right: 16rem;
+	}
+
+}
