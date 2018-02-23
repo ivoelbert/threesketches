@@ -16,7 +16,7 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 800, resizable: false, toolbar: false, icon:  "resourses/images/icon.png"})
+  mainWindow = new BrowserWindow({width: 1200, height: 800, resizable: false, toolbar: false})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -59,38 +59,4 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
-
-// Evento que se va a encargar de hacer lo que quiera con los datos.
-
-  /************************** SCAF **************************/
-  /*   guardar los formularios en la bd sobre el filesys    */
-  /**********************************************************/
-/*
-ipcMain.on('saveData', (event, data) => {
-  fileHandler.saveDataToDB(data);
-})
-*/
-
-// Evento que se encarga de obtener datos y enviarlos.
-ipcMain.on('requestData', (event, item) =>{
-
-  fs.readFile( item.path, (err, data) => {
-
-      if (err){//del path obtengo el id de estudio, la key es el nombre del guachin
-        let id = item.path.split('/')[2].split('.')[0];
-        fileHandler.removeItem(id , item.key ).then( (data) => {
-          event.sender.send('clearEstudios', data);
-        });
-
-      }else{
-        event.sender.send('getData', JSON.parse(data));
-      }
-
-
-  });
-
 })

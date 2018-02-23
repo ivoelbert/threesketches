@@ -109,12 +109,15 @@ let pupilader = new THREE.Mesh(pupilaGeometry, pupilaMaterial);
 pupilader.position.set(0, 0, 1.5);
 ojoder.add(pupilader);
 
-
+var setup = function() {
+  setFrameRate(30);
+  animate();
+}
 
 var animate = function () {
 
   requestNextFrame( animate );
-  
+
   let ang = THREE.Math.mapLinear(frameCount, 0, 120, 0, Math.PI * 2);
   let rot = THREE.Math.mapLinear(Math.sin(ang), -1, 1, -0.05, 0.05);
   let cameraRad = 30;
@@ -143,8 +146,6 @@ var animate = function () {
     saveFrame("test", frameCount);
   }
   */
-
 };
 
-setFrameRate(30);
-animate();
+setup();
