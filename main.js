@@ -16,7 +16,7 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 800, resizable: false, toolbar: false, icon:  "resourses/images/icon.png"})
+  mainWindow = new BrowserWindow({width: 1200, height: 800, resizable: false, toolbar: false, icon:  "resourses/images/icon.png"})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -27,7 +27,7 @@ function createWindow () {
   mainWindow.setMenuBarVisibility(false);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+   mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
