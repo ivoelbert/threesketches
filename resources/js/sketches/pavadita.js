@@ -140,12 +140,6 @@ var animate = function () {
 
 	renderer.render(scene, camera);
 
-  /*
-  if(frameCount < 300)
-  {
-    saveFrame("test", frameCount);
-  }
-  */
 };
 
 setup();

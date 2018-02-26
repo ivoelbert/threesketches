@@ -1,0 +1,3 @@
+Make javascript call update function from haskell?
+
+https://www.npmjs.com/package/require-haskell
