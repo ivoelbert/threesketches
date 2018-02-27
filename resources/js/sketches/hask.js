@@ -67,6 +67,8 @@ var animate = function () {
   camera.up.set(0, 1, 0);
   camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+  console.log(Haste.updates(frameCount));
+
 	renderer.render(scene, camera);
 
 };

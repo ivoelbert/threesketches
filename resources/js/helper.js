@@ -119,3 +119,65 @@ function saveDataUrl(dataurl, name)
 ////////////////////////////////
 // End handle save frame
 ////////////////////////////////
+
+////////////////////////////////
+// Handle object updates
+////////////////////////////////
+
+function handleUpdates(hObjectS)
+{
+  /*
+    hObject es un JSON de la forma:
+    "objName" : [{"type": "tipo", "param1": ..., ...}, ...]
+  */
+  let hObject = JSON.parse(hObjectS);
+  let keys = Object.keys(hObject);
+
+  for (let k = 0; k < keys.length; k++) {
+    let key = keys[k];
+    let objToUpdate = scene.getObjectByName(key);
+
+    let updates = hObject[key];
+    for(let i = 0; i < updates.length; i++)
+    {
+      let update = updates[i]
+      switch(update.type)
+      {
+        case "setPosition":
+        let pos = new THREE.Vector3(update.x, update.y, update.z);
+        objToUpdate.position.copy(pos);
+        break;
+
+        case "translateOnAxis":
+        let axis = new THREE.Vector3(update.x, update.y, update.z).normalize();
+        let dist = update.dist;
+        objToUpdate.translateOnAxis(axis, dist);
+        break;
+
+        case "applyQuaternion":
+        break;
+
+        case "rotateOnAxis":
+        break;
+
+        case "setUp":
+        break;
+
+        case "lookAt":
+        break;
+
+        case "setScale":
+        break;
+
+        case "applyMatrix":
+        break;
+      }
+    }
+  }
+
+  return undefined;
+}
+
+////////////////////////////////
+// End handle object updates
+////////////////////////////////
