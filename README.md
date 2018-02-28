@@ -112,7 +112,7 @@ Your animation will be a function of type
 myFirstUpdate :: Double -> ThreeAnimation ()
 ```
 
-this function describes your objects transformations frame-by-frame. That is, this function will be called each frame and passed the frame number as an argument. Sketchs will be run at 30fps.
+this function describes your objects transformations frame-by-frame. That is, this function will be called each frame and passed the frame number as an argument. Sketches will be run at 30fps.
 
 You can now set the position of the camera and rotate the cube by the Y axis as follows
 
