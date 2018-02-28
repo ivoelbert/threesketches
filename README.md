@@ -74,7 +74,7 @@ Then you can create your scene which must be of type
 myFirstScene :: ThreeScene ()
 ```
 
-Set up a camera, an ambient light and create a cube in the center
+Set up a camera, an ambient light and create a cube
 
 ```haskell
 myFirstScene = do newScene
