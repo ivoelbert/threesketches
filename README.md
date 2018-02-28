@@ -134,7 +134,7 @@ main = do
 
 Great! Now you can compile and run your sketch.
 
-More on what you can do in your *scene* and *update* in [DOCUMENTATION.md]
+More on what you can do in your *scene* and *update* in [DOCUMENTATION.md](https://github.com/ivoelbert/threesketches/blob/master/DOCUMENTATION.md)
 
 If things go south you can always base your sketch on *sketches/sceneTest.hs* and *sketches/updateTest.hs*
 
