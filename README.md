@@ -4,7 +4,7 @@ Write (very basic) [three.js](https://threejs.org/) sketches in Haskell
 
 ## Getting Started
 
-This will **NOT** be easy to set up. You will need GHC, [Node.js](https://nodejs.org/), [Haste](https://haste-lang.org/), and god know what else.
+This will **NOT** be easy to set up. You will need GHC, [Node.js](https://nodejs.org/), [Haste](https://haste-lang.org/), and god knows what else.
 
 ### Installing
 
