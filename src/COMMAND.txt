@@ -1,0 +1,1 @@
+ hastec '--start=$HASTE_MAIN();' update.hs
