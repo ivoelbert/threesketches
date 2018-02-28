@@ -144,32 +144,46 @@ function handleUpdates(hObjectS)
       switch(update.type)
       {
         case "setPosition":
-        let pos = new THREE.Vector3(update.x, update.y, update.z);
-        objToUpdate.position.copy(pos);
+        let sPos = new THREE.Vector3(update.x, update.y, update.z);
+        objToUpdate.position.copy(sPos);
         break;
 
         case "translateOnAxis":
-        let axis = new THREE.Vector3(update.x, update.y, update.z).normalize();
+        let tAxis = new THREE.Vector3(update.x, update.y, update.z).normalize();
         let dist = update.dist;
-        objToUpdate.translateOnAxis(axis, dist);
+        objToUpdate.translateOnAxis(tAxis, dist);
         break;
 
         case "applyQuaternion":
+        let quat = new THREE.Quaternion(update.x, update.y, update.z, update.w);
+        objToUpdate.applyQuaternion(quat);
         break;
 
         case "rotateOnAxis":
+        let rAxis = new THREE.Vector3(update.x, update.y, update.z).normalize();
+        let angle = update.radians;
+        objToUpdate.rotateOnAxis(rAxis, angle);
         break;
 
         case "setUp":
+        let up = new THREE.Vector3(update.x, update.y, update.z).normalize();
+        objToUpdate.up.copy(up);
         break;
 
         case "lookAt":
+        let lPos = new THREE.Vector3(update.x, update.y, update.z);
+        objToUpdate.lookAt(lPos);
         break;
 
         case "setScale":
+        let scl = new THREE.Vector3(update.x, update.y, update.z);
+        objToUpdate.scale.copy(scl);
         break;
 
         case "applyMatrix":
+        let arr = update.matrix;
+        let mat = new THREE.Matrix4().fromArray(arr);
+        objToUpdate.applyMatrix(mat);
         break;
       }
     }
