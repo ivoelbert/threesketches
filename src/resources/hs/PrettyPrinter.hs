@@ -4,8 +4,8 @@ import Text.PrettyPrint.HughesPJ
 import ThreeTypes
 import Data.List
 
-printToFile :: ThreeScene () -> IO ()
-printToFile scn = let pp = checkIntegrity (getSceneList scn)
+printScene :: ThreeScene () -> IO ()
+printScene scn = let pp = checkIntegrity (getSceneList scn)
                   in case pp of
                        Left err -> putStr err
                        Right str -> do putStr "success!\n"

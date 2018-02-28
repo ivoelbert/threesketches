@@ -19,4 +19,4 @@ scene = do
         addToScene "bola" bolaMesh
 
 main :: IO ()
-main = do printToFile scene
+main = do printScene scene

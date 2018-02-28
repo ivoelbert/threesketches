@@ -1,4 +1,4 @@
-{-# LINE 1 "C:\Users\Ivo\AppData\Local\Temp\ghc220_0\ghc_9.s" #-}
+{-# LINE 1 "C:\Users\Ivo\AppData\Local\Temp\ghc4128_0\ghc_6.s" #-}
 .data
 	.align 4
 .align 1
@@ -16,7 +16,7 @@ Main_main10_closure:
 .section .rodata
 	.align 4
 .align 1
-cds9_str:
+caNf_str:
 	.byte	100
 	.byte	105
 	.byte	114
@@ -32,27 +32,27 @@ cds9_str:
 	.long	22
 .globl Main_main10_info
 Main_main10_info:
-.Lcdsa:
+.LcaNg:
 	leal -12(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .Lcdsb
-.Lcdsc:
+	jb .LcaNh
+.LcaNi:
 	subl $4,%esp
 	pushl %esi
 	pushl %ebx
 	call newCAF
 	addl $12,%esp
 	testl %eax,%eax
-	je .Lcds8
-.Lcds7:
+	je .LcaNe
+.LcaNd:
 	movl $stg_bh_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
-	movl $cds9_str,8(%ebx)
+	movl $caNf_str,8(%ebx)
 	addl $-12,%ebp
 	jmp ghczmprim_GHCziCString_unpackCStringzh_info
-.Lcds8:
+.LcaNe:
 	jmp *(%esi)
-.Lcdsb:
+.LcaNh:
 	jmp *-16(%ebx)
 .data
 	.align 4
@@ -144,7 +144,7 @@ Main_main16_closure:
 .section .rodata
 	.align 4
 .align 1
-cdsD_str:
+caNJ_str:
 	.byte	99
 	.byte	97
 	.byte	109
@@ -158,27 +158,27 @@ cdsD_str:
 	.long	22
 .globl Main_main16_info
 Main_main16_info:
-.LcdsE:
+.LcaNK:
 	leal -12(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .LcdsF
-.LcdsG:
+	jb .LcaNL
+.LcaNM:
 	subl $4,%esp
 	pushl %esi
 	pushl %ebx
 	call newCAF
 	addl $12,%esp
 	testl %eax,%eax
-	je .LcdsC
-.LcdsB:
+	je .LcaNI
+.LcaNH:
 	movl $stg_bh_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
-	movl $cdsD_str,8(%ebx)
+	movl $caNJ_str,8(%ebx)
 	addl $-12,%ebp
 	jmp ghczmprim_GHCziCString_unpackCStringzh_info
-.LcdsC:
+.LcaNI:
 	jmp *(%esi)
-.LcdsF:
+.LcaNL:
 	jmp *-16(%ebx)
 .data
 	.align 4
@@ -328,7 +328,7 @@ Main_main31_closure:
 .section .rodata
 	.align 4
 .align 1
-cdtl_str:
+caOr_str:
 	.byte	109
 	.byte	101
 	.byte	115
@@ -340,27 +340,27 @@ cdtl_str:
 	.long	22
 .globl Main_main31_info
 Main_main31_info:
-.Lcdtm:
+.LcaOs:
 	leal -12(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .Lcdtn
-.Lcdto:
+	jb .LcaOt
+.LcaOu:
 	subl $4,%esp
 	pushl %esi
 	pushl %ebx
 	call newCAF
 	addl $12,%esp
 	testl %eax,%eax
-	je .Lcdtk
-.Lcdtj:
+	je .LcaOq
+.LcaOp:
 	movl $stg_bh_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
-	movl $cdtl_str,8(%ebx)
+	movl $caOr_str,8(%ebx)
 	addl $-12,%ebp
 	jmp ghczmprim_GHCziCString_unpackCStringzh_info
-.Lcdtk:
+.LcaOq:
 	jmp *(%esi)
-.Lcdtn:
+.LcaOt:
 	jmp *-16(%ebx)
 .data
 	.align 4
@@ -424,7 +424,7 @@ Main_main33_closure:
 .section .rodata
 	.align 4
 .align 1
-cdtL_str:
+caOR_str:
 	.byte	98
 	.byte	111
 	.byte	108
@@ -436,27 +436,27 @@ cdtL_str:
 	.long	22
 .globl Main_main33_info
 Main_main33_info:
-.LcdtM:
+.LcaOS:
 	leal -12(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .LcdtN
-.LcdtO:
+	jb .LcaOT
+.LcaOU:
 	subl $4,%esp
 	pushl %esi
 	pushl %ebx
 	call newCAF
 	addl $12,%esp
 	testl %eax,%eax
-	je .LcdtK
-.LcdtJ:
+	je .LcaOQ
+.LcaOP:
 	movl $stg_bh_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
-	movl $cdtL_str,8(%ebx)
+	movl $caOR_str,8(%ebx)
 	addl $-12,%ebp
 	jmp ghczmprim_GHCziCString_unpackCStringzh_info
-.LcdtK:
+.LcaOQ:
 	jmp *(%esi)
-.LcdtN:
+.LcaOT:
 	jmp *-16(%ebx)
 .data
 	.align 4
@@ -484,7 +484,7 @@ Main_mainzuf1_closure:
 .section .rodata
 	.align 4
 .align 1
-cdu6_str:
+caPc_str:
 	.byte	40
 	.byte	102
 	.byte	117
@@ -522,23 +522,23 @@ cdu6_str:
 	.long	22
 .globl Main_mainzuf1_info
 Main_mainzuf1_info:
-.Lcdu8:
+.LcaPe:
 	leal -16(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .Lcduf
-.Lcdug:
+	jb .LcaPl
+.LcaPm:
 	subl $4,%esp
 	pushl %esi
 	pushl %ebx
 	call newCAF
 	addl $12,%esp
 	testl %eax,%eax
-	je .Lcdu5
-.Lcdu4:
+	je .LcaPb
+.LcaPa:
 	movl $stg_bh_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
-	movl cdu6_str+3,%eax
-	movl $cduc_info,-16(%ebp)
+	movl caPc_str+3,%eax
+	movl $caPi_info,-16(%ebp)
 	addl $-16,%ebp
 	movl 872(%ebx),%ecx
 	movl 20(%ecx),%edx
@@ -618,26 +618,26 @@ Main_mainzuf1_info:
 	movl 136(%esp),%eax
 	movl %eax,%esi
 	jmp *(%ebp)
-.Lcdu5:
+.LcaPb:
 	jmp *(%esi)
 .text
 	.align 4,0x90
 	.long	0
 	.long	32
-cduc_info:
-.Lcduc:
+caPi_info:
+.LcaPi:
 	addl $8,%edi
 	cmpl 856(%ebx),%edi
-	ja .Lcduj
-.Lcdui:
+	ja .LcaPp
+.LcaPo:
 	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
 	movl %esi,(%edi)
 	leal -3(%edi),%esi
 	addl $4,%ebp
 	jmp *(%ebp)
-.Lcduf:
+.LcaPl:
 	jmp *-16(%ebx)
-.Lcduj:
+.LcaPp:
 	movl $8,904(%ebx)
 	jmp stg_gc_unbx_r1
 .data
@@ -651,20 +651,20 @@ Main_zdwa_closure:
 	.align 4,0x90
 	.long	1
 	.long	17
-sdrw_info:
-.LcdvG:
+saMC_info:
+.LcaQM:
 	leal -16(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .LcdvR
-.LcdvS:
+	jb .LcaQX
+.LcaQY:
 	movl $stg_upd_frame_info,-12(%ebp)
 	movl %esi,-8(%ebp)
-	movl $cdvD_info,-16(%ebp)
+	movl $caQJ_info,-16(%ebp)
 	movl 12(%esi),%esi
 	addl $-16,%ebp
 	testw $7,%si
-	jne .LcdvD
-.LcdvE:
+	jne .LcaQJ
+.LcaQK:
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *(%esi)
@@ -672,16 +672,16 @@ sdrw_info:
 	.align 4,0x90
 	.long	0
 	.long	32
-cdvD_info:
-.LcdvD:
+caQJ_info:
+.LcaQJ:
 	addl $12,%edi
 	cmpl 856(%ebx),%edi
-	ja .LcdvV
-.LcdvU:
+	ja .LcaR1
+.LcaR0:
 #	gldsd 3(%esi),%fake0
 	fldl 3(%esi) ; fstp %st(1)
-#	gldsd .Lndx3,%fake1
-	fldl .Lndx3 ; fstp %st(2)
+#	gldsd .LnaS9,%fake1
+	fldl .LnaS9 ; fstp %st(2)
 #	gmult %fake0,%fake1,%fake0
 	#GMUL-xxxcase1
 	fld %st(1) ; fmulp %st(0),%st(1)
@@ -690,18 +690,18 @@ cdvD_info:
 fld %st(0); fsin
 	fnstsw %ax
 	test   $0x400,%eax
-	je     .Lndx0
+	je     .LnaS6
 	ffree %st(7); fldpi
 	fadd   %st(0),%st
 	fxch   %st(1)
-.Lndx1:
+.LnaS7:
 	fprem1
 	fnstsw %ax
 	test   $0x400,%eax
-	jne    .Lndx1
+	jne    .LnaS7
 	fstp   %st(1)
 	fsin
-.Lndx0:
+.LnaS6:
 	popl %eax;
 	fstp %st(1)
 	movl $ghczmprim_GHCziTypes_Dzh_con_info,-8(%edi)
@@ -712,11 +712,11 @@ fld %st(0); fsin
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *(%ebp)
-.LcdvR:
+.LcaQX:
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *-16(%ebx)
-.LcdvV:
+.LcaR1:
 	movl $12,904(%ebx)
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
@@ -724,7 +724,7 @@ fld %st(0); fsin
 .section .rodata
 	.align 4
 .align 8
-.Lndx3:
+.LnaS9:
 	.byte	154
 	.byte	153
 	.byte	153
@@ -737,20 +737,20 @@ fld %st(0); fsin
 	.align 4,0x90
 	.long	1
 	.long	17
-sdrr_info:
-.Lcdw3:
+saMx_info:
+.LcaR9:
 	leal -16(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .Lcdwe
-.Lcdwf:
+	jb .LcaRk
+.LcaRl:
 	movl $stg_upd_frame_info,-12(%ebp)
 	movl %esi,-8(%ebp)
-	movl $cdw0_info,-16(%ebp)
+	movl $caR6_info,-16(%ebp)
 	movl 12(%esi),%esi
 	addl $-16,%ebp
 	testw $7,%si
-	jne .Lcdw0
-.Lcdw1:
+	jne .LcaR6
+.LcaR7:
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *(%esi)
@@ -758,16 +758,16 @@ sdrr_info:
 	.align 4,0x90
 	.long	0
 	.long	32
-cdw0_info:
-.Lcdw0:
+caR6_info:
+.LcaR6:
 	addl $12,%edi
 	cmpl 856(%ebx),%edi
-	ja .Lcdwi
-.Lcdwh:
+	ja .LcaRo
+.LcaRn:
 #	gldsd 3(%esi),%fake0
 	fldl 3(%esi) ; fstp %st(1)
-#	gldsd .Lndxc,%fake1
-	fldl .Lndxc ; fstp %st(2)
+#	gldsd .LnaSi,%fake1
+	fldl .LnaSi ; fstp %st(2)
 #	gmult %fake0,%fake1,%fake0
 	#GMUL-xxxcase1
 	fld %st(1) ; fmulp %st(0),%st(1)
@@ -776,18 +776,18 @@ cdw0_info:
 fld %st(0); fcos
 	fnstsw %ax
 	test   $0x400,%eax
-	je     .Lndx9
+	je     .LnaSf
 	ffree %st(7); fldpi
 	fadd   %st(0),%st
 	fxch   %st(1)
-.Lndxa:
+.LnaSg:
 	fprem1
 	fnstsw %ax
 	test   $0x400,%eax
-	jne    .Lndxa
+	jne    .LnaSg
 	fstp   %st(1)
 	fcos
-.Lndx9:
+.LnaSf:
 	popl %eax;
 	fstp %st(1)
 	movl $ghczmprim_GHCziTypes_Dzh_con_info,-8(%edi)
@@ -798,11 +798,11 @@ fld %st(0); fcos
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *(%ebp)
-.Lcdwe:
+.LcaRk:
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
 	jmp *-16(%ebx)
-.Lcdwi:
+.LcaRo:
 	movl $12,904(%ebx)
 	ffree %st(0) ;ffree %st(1) ;ffree %st(2) ;ffree %st(3)
 	ffree %st(4) ;ffree %st(5)
@@ -810,7 +810,7 @@ fld %st(0); fcos
 .section .rodata
 	.align 4
 .align 8
-.Lndxc:
+.LnaSi:
 	.byte	154
 	.byte	153
 	.byte	153
@@ -821,26 +821,26 @@ fld %st(0); fcos
 	.byte	63
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(sdrG_info)+0
+	.long	SaS2_srt-(saMM_info)+0
 	.long	1
 	.long	4128785
-sdrG_info:
-.Lcdwp:
+saMM_info:
+.LcaRv:
 	movl %esi,%eax
 	leal -16(%ebp),%ecx
 	cmpl 840(%ebx),%ecx
-	jb .LcdwF
-.LcdwG:
+	jb .LcaRL
+.LcaRM:
 	addl $80,%edi
 	cmpl 856(%ebx),%edi
-	ja .LcdwI
-.LcdwH:
+	ja .LcaRO
+.LcaRN:
 	movl $stg_upd_frame_info,-12(%ebp)
 	movl %eax,-8(%ebp)
 	movl 12(%eax),%eax
-	movl $sdrw_info,-76(%edi)
+	movl $saMC_info,-76(%edi)
 	movl %eax,-64(%edi)
-	movl $sdrr_info,-60(%edi)
+	movl $saMx_info,-60(%edi)
 	movl %eax,-48(%edi)
 	movl $ThreeTypes_Vector3_con_info,-44(%edi)
 	leal -60(%edi),%eax
@@ -859,7 +859,7 @@ sdrG_info:
 	leal -19(%edi),%eax
 	movl %eax,-4(%edi)
 	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,(%edi)
-	movl $cdwn_info,-16(%ebp)
+	movl $caRt_info,-16(%ebp)
 	movl $Main_main26_closure+2,16(%ebx)
 	leal -6(%edi),%eax
 	movl %eax,8(%ebx)
@@ -867,45 +867,45 @@ sdrG_info:
 	jmp base_GHCziBase_zpzp_info
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(cdwn_info)+0
+	.long	SaS2_srt-(caRt_info)+0
 	.long	0
 	.long	983072
-cdwn_info:
-.Lcdwn:
-	movl $cdws_info,(%ebp)
+caRt_info:
+.LcaRt:
+	movl $caRy_info,(%ebp)
 	movl $Main_main22_closure+2,16(%ebx)
 	movl %esi,8(%ebx)
 	jmp base_GHCziBase_zpzp_info
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(cdws_info)+0
+	.long	SaS2_srt-(caRy_info)+4
 	.long	0
 	.long	458784
-cdws_info:
-.Lcdws:
-	movl $cdww_info,(%ebp)
+caRy_info:
+.LcaRy:
+	movl $caRC_info,(%ebp)
 	movl $Main_main17_closure+2,16(%ebx)
 	movl %esi,8(%ebx)
 	jmp base_GHCziBase_zpzp_info
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(cdww_info)+0
+	.long	SaS2_srt-(caRC_info)+4
 	.long	0
-	.long	196640
-cdww_info:
-.Lcdww:
-	movl $cdwA_info,(%ebp)
+	.long	327712
+caRC_info:
+.LcaRC:
+	movl $caRG_info,(%ebp)
 	movl $Main_main11_closure+2,16(%ebx)
 	movl %esi,8(%ebx)
 	jmp base_GHCziBase_zpzp_info
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(cdwA_info)+0
+	.long	SaS2_srt-(caRG_info)+4
 	.long	0
 	.long	65568
-cdwA_info:
-.LcdwA:
-	movl $cdwE_info,(%ebp)
+caRG_info:
+.LcaRG:
+	movl $caRK_info,(%ebp)
 	movl $Main_main3_closure+2,16(%ebx)
 	movl %esi,8(%ebx)
 	jmp base_GHCziBase_zpzp_info
@@ -913,38 +913,38 @@ cdwA_info:
 	.align 4,0x90
 	.long	0
 	.long	32
-cdwE_info:
-.LcdwE:
+caRK_info:
+.LcaRK:
 	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,16(%ebx)
 	movl %esi,8(%ebx)
 	addl $4,%ebp
 	jmp base_GHCziBase_zpzp_info
-.LcdwI:
+.LcaRO:
 	movl $80,904(%ebx)
-.LcdwF:
+.LcaRL:
 	movl %eax,%esi
 	jmp *-16(%ebx)
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(Main_zdwa_info)+0
+	.long	SaS2_srt-(Main_zdwa_info)+0
 	.long	65541
 	.long	0
 	.long	8323087
 .globl Main_zdwa_info
 Main_zdwa_info:
-.LcdwR:
+.LcaRX:
 	addl $16,%edi
 	movl 8(%ebx),%eax
 	cmpl 856(%ebx),%edi
-	ja .LcdwV
-.LcdwU:
-	movl $sdrG_info,-12(%edi)
+	ja .LcaS1
+.LcaS0:
+	movl $saMM_info,-12(%edi)
 	movl %eax,(%edi)
 	leal -12(%edi),%eax
 	movl %eax,8(%ebx)
 	movl $ghczmprim_GHCziTuple_Z0T_closure+1,%esi
 	jmp *(%ebp)
-.LcdwV:
+.LcaS1:
 	movl $16,904(%ebx)
 	movl %eax,8(%ebx)
 	movl $Main_zdwa_closure,%esi
@@ -958,19 +958,19 @@ Main_main2_closure:
 	.long	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(Main_main2_info)+24
+	.long	SaS2_srt-(Main_main2_info)+24
 	.long	65541
 	.long	0
 	.long	196623
 .globl Main_main2_info
 Main_main2_info:
-.LcdxA:
+.LcaSG:
 	movl 8(%ebx),%eax
 	leal -4(%ebp),%ecx
 	cmpl 840(%ebx),%ecx
-	jb .LcdxB
-.LcdxC:
-	movl $cdxx_info,-4(%ebp)
+	jb .LcaSH
+.LcaSI:
+	movl $caSD_info,-4(%ebp)
 	movl %eax,8(%ebx)
 	addl $-4,%ebp
 	jmp Main_zdwa_info
@@ -978,24 +978,24 @@ Main_main2_info:
 	.align 4,0x90
 	.long	0
 	.long	32
-cdxx_info:
-.Lcdxx:
+caSD_info:
+.LcaSD:
 	addl $12,%edi
 	movl 8(%ebx),%eax
 	cmpl 856(%ebx),%edi
-	ja .LcdxF
-.LcdxE:
+	ja .LcaSL
+.LcaSK:
 	movl $ghczmprim_GHCziTuple_Z2T_con_info,-8(%edi)
 	movl %esi,-4(%edi)
 	movl %eax,(%edi)
 	leal -7(%edi),%esi
 	addl $4,%ebp
 	jmp *(%ebp)
-.LcdxB:
+.LcaSH:
 	movl %eax,8(%ebx)
 	movl $Main_main2_closure,%esi
 	jmp *-8(%ebx)
-.LcdxF:
+.LcaSL:
 	movl $12,904(%ebx)
 	movl %eax,8(%ebx)
 	jmp stg_gc_pp
@@ -1008,18 +1008,18 @@ Main_main1_closure:
 	.long	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(sdrO_info)+28
+	.long	SaS2_srt-(saMU_info)+28
 	.long	65541
 	.long	65536
 	.long	196619
-sdrO_info:
-.Lcdya:
+saMU_info:
+.LcaTg:
 	movl 8(%ebx),%eax
 	leal -4(%ebp),%ecx
 	cmpl 840(%ebx),%ecx
-	jb .Lcdye
-.Lcdyf:
-	movl $cdy8_info,-4(%ebp)
+	jb .LcaTk
+.LcaTl:
+	movl $caTe_info,-4(%ebp)
 	movl %eax,16(%ebx)
 	movl $Main_main2_closure+1,8(%ebx)
 	addl $-4,%ebp
@@ -1028,27 +1028,27 @@ sdrO_info:
 	.align 4,0x90
 	.long	0
 	.long	32
-cdy8_info:
-.Lcdy8:
+caTe_info:
+.LcaTe:
 	addl $8,%edi
 	cmpl 856(%ebx),%edi
-	ja .Lcdyi
-.Lcdyh:
+	ja .LcaTo
+.LcaTn:
 	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
 	movl %esi,(%edi)
 	leal -3(%edi),%esi
 	addl $4,%ebp
 	jmp *(%ebp)
-.Lcdye:
+.LcaTk:
 	movl %eax,8(%ebx)
 	jmp *-8(%ebx)
-.Lcdyi:
+.LcaTo:
 	movl $8,904(%ebx)
 	jmp stg_gc_unbx_r1
 .section .rodata
 	.align 4
 .align 1
-cdyG_str:
+caTM_str:
 	.byte	117
 	.byte	112
 	.byte	100
@@ -1059,23 +1059,23 @@ cdyG_str:
 	.byte	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(Main_main1_info)+28
+	.long	SaS2_srt-(Main_main1_info)+28
 	.long	65539
 	.long	0
 	.long	983055
 .globl Main_main1_info
 Main_main1_info:
-.Lcdyk:
+.LcaTq:
 	leal -8(%ebp),%eax
 	cmpl 840(%ebx),%eax
-	jb .Lcdyv
-.Lcdyw:
+	jb .LcaTB
+.LcaTC:
 	addl $8,%edi
 	cmpl 856(%ebx),%edi
-	ja .Lcdyy
-.Lcdyx:
-	movl $sdrO_info,-4(%edi)
-	movl $cdys_info,-4(%ebp)
+	ja .LcaTE
+.LcaTD:
+	movl $saMU_info,-4(%edi)
+	movl $caTy_info,-4(%ebp)
 	addl $-4,%ebp
 	movl (%edi),%eax
 	movl 872(%ebx),%ecx
@@ -1159,29 +1159,29 @@ Main_main1_info:
 	jmp *(%ebp)
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(cdys_info)+40
+	.long	SaS2_srt-(caTy_info)+36
 	.long	0
 	.long	65568
-cdys_info:
-.Lcdys:
-	movl $cdyu_info,-4(%ebp)
+caTy_info:
+.LcaTy:
+	movl $caTA_info,-4(%ebp)
 	movl %esi,%eax
 	movl $Main_mainzuf1_closure,%esi
 	movl %eax,(%ebp)
 	addl $-4,%ebp
 	testw $7,%si
-	jne .Lcdyu
-.LcdyB:
+	jne .LcaTA
+.LcaTH:
 	jmp *(%esi)
 .text
 	.align 4,0x90
 	.long	65
 	.long	32
-cdyu_info:
-.Lcdyu:
-	movl cdyG_str+3,%eax
+caTA_info:
+.LcaTA:
+	movl caTM_str+3,%eax
 	movl 4(%ebp),%ecx
-	movl $cdyN_info,4(%ebp)
+	movl $caTT_info,4(%ebp)
 	addl $4,%ebp
 	movl 3(%esi),%edx
 	movl %edx,64(%esp)
@@ -1267,17 +1267,17 @@ cdyu_info:
 	movl 160(%esp),%eax
 	movl %eax,%esi
 	jmp *(%ebp)
-.Lcdyy:
+.LcaTE:
 	movl $8,904(%ebx)
-.Lcdyv:
+.LcaTB:
 	movl $Main_main1_closure,%esi
 	jmp *-8(%ebx)
 .text
 	.align 4,0x90
 	.long	0
 	.long	32
-cdyN_info:
-.LcdyN:
+caTT_info:
+.LcaTT:
 	addl $4,%ebp
 	jmp DTkUIHCJaUgHU6UDGcO9WY_HasteziPrimziAny_zdfFromAnyZLZR4_info
 .data
@@ -1289,13 +1289,13 @@ Main_main_closure:
 	.long	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(Main_main_info)+36
+	.long	SaS2_srt-(Main_main_info)+40
 	.long	65539
 	.long	0
 	.long	65551
 .globl Main_main_info
 Main_main_info:
-.LcdzN:
+.LcaUT:
 	jmp Main_main1_info
 .data
 	.align 4
@@ -1306,13 +1306,13 @@ Main_main34_closure:
 	.long	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(Main_main34_info)+36
+	.long	SaS2_srt-(Main_main34_info)+40
 	.long	65539
 	.long	0
-	.long	327695
+	.long	196623
 .globl Main_main34_info
 Main_main34_info:
-.LcdzY:
+.LcaV4:
 	movl $Main_main1_closure+1,8(%ebx)
 	jmp base_GHCziTopHandler_runMainIO1_info
 .data
@@ -1324,29 +1324,29 @@ ZCMain_main_closure:
 	.long	0
 .text
 	.align 4,0x90
-	.long	SdwW_srt-(ZCMain_main_info)+48
+	.long	SaS2_srt-(ZCMain_main_info)+48
 	.long	65539
 	.long	0
 	.long	65551
 .globl ZCMain_main_info
 ZCMain_main_info:
-.LcdA9:
+.LcaVf:
 	jmp Main_main34_info
 .section .data
 	.align 4
 .align 1
-SdwW_srt:
-	.long	Main_main3_closure
-	.long	Main_main11_closure
-	.long	Main_main17_closure
+SaS2_srt:
 	.long	Main_main22_closure
+	.long	Main_main3_closure
+	.long	Main_main17_closure
+	.long	Main_main11_closure
 	.long	Main_main26_closure
 	.long	Main_main33_closure
 	.long	Main_zdwa_closure
 	.long	Main_main2_closure
 	.long	ThreeUpdate_zdwcreateUpdateFunction_closure
-	.long	Main_main1_closure
 	.long	Main_mainzuf1_closure
+	.long	Main_main1_closure
 	.long	base_GHCziTopHandler_runMainIO1_closure
 	.long	Main_main34_closure
 .ident "GHC 7.10.2"
