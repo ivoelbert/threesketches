@@ -1,4 +1,4 @@
-# Node.js + three.js + Haskell sketches
+# Electron + three.js + Haskell sketches
 
 Write (very basic) [three.js](https://threejs.org/) sketches in Haskell
 
