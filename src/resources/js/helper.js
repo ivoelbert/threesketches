@@ -195,3 +195,15 @@ function handleUpdates(hObjectS)
 ////////////////////////////////
 // End handle object updates
 ////////////////////////////////
+
+////////////////////////////////
+// Handle easing functions
+////////////////////////////////
+
+function easeQuad(t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t }
+function easeCubic(t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
+function easeQuint(t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+
+////////////////////////////////
+// End handle easing functions
+////////////////////////////////
