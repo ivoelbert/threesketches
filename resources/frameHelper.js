@@ -71,7 +71,7 @@ const saveDataUrl = (dataurl, name) => {
             }
 
             response.type = matches[1];
-            response.data = new Buffer(matches[2], 'base64');
+            response.data = Buffer.from(matches[2], 'base64');
 
             return response;
         }
