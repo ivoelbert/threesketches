@@ -11,9 +11,6 @@
         "start": "electron ."
     },
     "author": "ivoelbert",
-    "devDependencies": {
-        "electron": "^1.8.0"
-    },
     "dependencies": {
         "browserify": "^16.2.3",
         "file-system": "^2.2.2",
