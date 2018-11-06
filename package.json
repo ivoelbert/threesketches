@@ -12,7 +12,7 @@
     },
     "author": "ivoelbert",
     "dependencies": {
-        "browserify": "^16.2.3",
+        "electron": "^3.0.8",
         "file-system": "^2.2.2",
         "npm": "^5.2.0",
         "three": "^0.98.0"
