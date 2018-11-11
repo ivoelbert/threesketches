@@ -5,7 +5,7 @@ var renderer = new THREE.WebGLRenderer( { preserveDrawingBuffer: true, antialias
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-module.exports.frameRate = 60;
+module.exports.frameRate = 30;
 module.exports.frameCount = 0;
 
 ////////////////////////////////
