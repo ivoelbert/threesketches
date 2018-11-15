@@ -2,7 +2,7 @@ const frameHelper = require('./resources/frameHelper.js');
 const mouseHelper = require('./resources/mouseHelper.js');
 const THREE = require('three');
 
-const recording = true;
+const recording = false;
 const animationFrames = 240;
 const rad = 450;
 
