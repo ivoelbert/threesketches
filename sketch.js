@@ -38,7 +38,7 @@ const init = () => {
         shininess: 100
     });
 
-    [...new Array(500)].map( (v, i) => {
+    [...new Array(500)].map( _ => {
         const sph = new THREE.Mesh(sphGeom, sphMat);
         sph.position.copy(commonFunctions.randomVector().multiplyScalar(250));
         scene.add(sph);
