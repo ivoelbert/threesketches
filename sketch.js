@@ -3,16 +3,17 @@ const mouseHelper = require('./resources/mouseHelper.js');
 const commonFunctions = require('./resources/commonFunctions.js');
 const THREE = require('three');
 
+const width = 800, height = 800;
 const recording = false;
 const animationFrames = 300;
 let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 3000 );
+let camera = new THREE.PerspectiveCamera( 70, width / height, 0.01, 3000 );
 
 const cameraRad = 500;
 
 // SETUP
 const init = () => {
-    frameHelper.resize(800, 800);
+    frameHelper.resize(width, height);
     frameHelper.setFrameRate(30);
     
     camera.position.z = cameraRad;
