@@ -103,14 +103,3 @@ module.exports.saveFrame = saveFrame;
 // End handle save frame
 ////////////////////////////////
 
-////////////////////////////////
-// Handle easing functions
-////////////////////////////////
-
-module.exports.easeInOutQuad = t => { return t<.5 ? 2*t*t : -1+(4-2*t)*t };
-module.exports.easeInOutCubic = t => { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 };
-module.exports.easeInOutQuint = t => { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t };
-
-////////////////////////////////
-// End handle easing functions
-////////////////////////////////

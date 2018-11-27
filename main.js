@@ -12,6 +12,9 @@ const url = require('url');
 let mainWindow;
 
 function createWindow () {
+
+    
+
     // Create the browser window.
     mainWindow = new BrowserWindow({width: 800, height: 800, resizable: false, toolbar: false});
     // and load the index.html of the app.
@@ -24,6 +27,10 @@ function createWindow () {
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
+
+    electron.globalShortcut.register('CommandOrControl+I', () => {
+        mainWindow.webContents.toggleDevTools();
+    });
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
