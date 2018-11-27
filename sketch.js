@@ -12,13 +12,37 @@ const cameraRad = 500;
 
 // SETUP
 const init = () => {
+    frameHelper.resize(800, 800);
     frameHelper.setFrameRate(30);
     
     camera.position.z = cameraRad;
 
+    const dirLightTop = new THREE.DirectionalLight( 0x42bcf4, 0.5 );
+    dirLightTop.position.set(0, 1, 0);
+    scene.add( dirLightTop );
+
+    const dirLightBottom = new THREE.DirectionalLight( 0xf2a32e, 0.5 );
+    dirLightBottom.position.set(0, -1, 0);
+    scene.add( dirLightBottom );
+
+    const pointLight = new THREE.PointLight( 0xfafafa, 1, 500 );
+    scene.add(pointLight);
+
     const fogColor = new THREE.Color(0x000000);
     scene.background = fogColor;
     scene.fog = new THREE.FogExp2(fogColor, 1 / 1000);
+
+    const sphGeom = new THREE.SphereBufferGeometry(15, 32, 32);
+    const sphMat = new THREE.MeshPhongMaterial({
+        color: 0xfffdd3,
+        shininess: 100
+    });
+
+    [...new Array(500)].map( (v, i) => {
+        const sph = new THREE.Mesh(sphGeom, sphMat);
+        sph.position.copy(commonFunctions.randomVector().multiplyScalar(250));
+        scene.add(sph);
+    })
 
     animate();
 }

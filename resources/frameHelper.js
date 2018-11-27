@@ -1,5 +1,6 @@
 const fs = require('file-system');
 const THREE = require('three');
+const electron = require('electron');
 
 var renderer = new THREE.WebGLRenderer( { preserveDrawingBuffer: true, antialias: true } );
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -18,6 +19,21 @@ const render = (scene, camera) => {
 module.exports.render = render;
 ////////////////////////////////
 // End render function
+////////////////////////////////
+
+
+////////////////////////////////
+// Handle frame stuff
+////////////////////////////////
+
+const resize = (w, h) => {
+    electron.ipcRenderer.send('resize', w, h);
+    renderer.setSize( w, h );
+}
+
+module.exports.resize = resize;
+////////////////////////////////
+// End handle frame stuff
 ////////////////////////////////
 
 

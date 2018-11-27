@@ -28,8 +28,13 @@ function createWindow () {
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
 
+    // CTRL+I toggles devTools
     electron.globalShortcut.register('CommandOrControl+I', () => {
         mainWindow.webContents.toggleDevTools();
+    });
+
+    electron.ipcMain.on('resize', function (e, x, y) {
+        mainWindow.setSize(x, y);
     });
 
     // Emitted when the window is closed.
