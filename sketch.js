@@ -5,7 +5,7 @@ const THREE = require('three');
 
 const width = 800, height = 800;
 const recording = false;
-const animationFrames = 300;
+const animationFrames = 1000;
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera( 70, width / height, 0.01, 3000 );
 
@@ -20,6 +20,7 @@ let pos = [];
 
 // SETUP
 const init = () => {
+    frameHelper.recording(recording);
     frameHelper.resize(width, height);
     frameHelper.setFrameRate(30);
     
@@ -46,9 +47,9 @@ const init = () => {
         shininess: 100
     });
 
-    [...new Array(sphPerSide)].map( (_, x) => {
-        [...new Array(sphPerSide)].map( (_, y) => {
-            [...new Array(sphPerSide)].map( (_, z) => {
+    commonFunctions.repeat( sphPerSide, x => {
+        commonFunctions.repeat( sphPerSide, y => {
+            commonFunctions.repeat( sphPerSide, z => {
                 const sph = new THREE.Mesh(sphGeom, sphMat);
                 const px = THREE.Math.mapLinear(x, 0, sphPerSide, -side/2, side/2);
                 const py = THREE.Math.mapLinear(y, 0, sphPerSide, -side/2, side/2);
@@ -74,8 +75,8 @@ const animate = () => {
     camera.position.set(Math.sin(ang) * cameraRad, 0, Math.cos(ang) * cameraRad);
     camera.lookAt(0, 0, 0);
 
-    const wiggleSz = 30;
-    const wiggles = 2;
+    const wiggleSz = 15;
+    const wiggles = 1.5;
     const speed = 5;
     sphs.map( (sph, i) => {
         const {x, y, z} = sph.position;
@@ -96,7 +97,6 @@ const animate = () => {
     if(recording && frameHelper.frameCount < animationFrames)
         frameHelper.saveFrame("bubbles", frameHelper.frameCount);
 };
-
 
 
 // INIT 

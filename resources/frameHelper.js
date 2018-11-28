@@ -10,15 +10,21 @@ module.exports.frameRate = 30;
 module.exports.frameCount = 0;
 
 ////////////////////////////////
-// Handle render function
+// Handle render
 ////////////////////////////////
+
+const recording = b => {
+    renderer.preserveDrawingBuffer = b;
+}
+
 const render = (scene, camera) => {
     renderer.render(scene, camera);
 }
 
+module.exports.recording = recording;
 module.exports.render = render;
 ////////////////////////////////
-// End render function
+// End render
 ////////////////////////////////
 
 
