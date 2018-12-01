@@ -3,7 +3,7 @@ const THREE = require('three');
 const electron = require('electron');
 
 var renderer = new THREE.WebGLRenderer( { preserveDrawingBuffer: false, antialias: true, alpha: true } );
-renderer.setClearColor(0x000000, 0);
+renderer.setClearColor(0x000000, 1);
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.body.appendChild( renderer.domElement );
