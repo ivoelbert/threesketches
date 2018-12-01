@@ -5,64 +5,44 @@ const THREE = require('three');
 
 const width = 800, height = 800;
 const recording = false;
-const animationFrames = 1000;
+const animationFrames = 300;
 let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera( 70, width / height, 0.01, 3000 );
-
+let camera = new THREE.PerspectiveCamera( 40, width / height, 0.01, 3000 );
 const cameraRad = 500;
 
-const sphPerSide = 10;
-const sphSz = 10;
-const side = 400;
-
-let sphs = [];
-let pos = [];
+let cubes;
 
 // SETUP
 const init = () => {
     frameHelper.recording(recording);
     frameHelper.resize(width, height);
     frameHelper.setFrameRate(30);
-    
-    camera.position.z = cameraRad;
 
-    const dirLightTop = new THREE.DirectionalLight( 0x42bcf4, 0.5 );
-    dirLightTop.position.set(0, 1, 0);
+    camera.position.set(0, 0, cameraRad);
+    camera.lookAt(0, 0, 0);
+
+    const dirLightTop = new THREE.DirectionalLight( 0x8ddbff, 1 );
+    dirLightTop.position.set(1, 1, 1);
     scene.add( dirLightTop );
 
-    const dirLightBottom = new THREE.DirectionalLight( 0xf2a32e, 0.5 );
-    dirLightBottom.position.set(0, -1, 0);
+    const dirLightBottom = new THREE.DirectionalLight( 0xf49538, 1 );
+    dirLightBottom.position.set(-1, -1, -1);
     scene.add( dirLightBottom );
 
-    const pointLight = new THREE.PointLight( 0xfafafa, 1, 500 );
-    scene.add(pointLight);
+    const ambient = new THREE.AmbientLight(0xfafafa, 0.2);
+    scene.add(ambient);
 
-    const fogColor = new THREE.Color(0x000000);
-    scene.background = fogColor;
-    scene.fog = new THREE.FogExp2(fogColor, 1 / 1000);
+    const cubeGeom = new THREE.BoxBufferGeometry();
+    const cubeMat = new THREE.MeshLambertMaterial({color: 0xfafafa});
 
-    const sphGeom = new THREE.SphereBufferGeometry(sphSz, 32, 32);
-    const sphMat = new THREE.MeshPhongMaterial({
-        color: 0xfffdd3,
-        shininess: 100
-    });
-
-    commonFunctions.repeat( sphPerSide, x => {
-        commonFunctions.repeat( sphPerSide, y => {
-            commonFunctions.repeat( sphPerSide, z => {
-                const sph = new THREE.Mesh(sphGeom, sphMat);
-                const px = THREE.Math.mapLinear(x, 0, sphPerSide, -side/2, side/2);
-                const py = THREE.Math.mapLinear(y, 0, sphPerSide, -side/2, side/2);
-                const pz = THREE.Math.mapLinear(z, 0, sphPerSide, -side/2, side/2);
-                sph.position.set(px, py, pz);
-                pos.push(new THREE.Vector3(px, py, pz));
-                sphs.push(sph);
-                scene.add(sph);
-            })
-        })
+    cubes = commonFunctions.tabulate(20, i => {
+        const cube = new THREE.Mesh(cubeGeom, cubeMat);
+        cube.scale.multiplyScalar(commonFunctions.randBetween(10, 100));
+        cube.position.copy(commonFunctions.randomVector().multiplyScalar(100));
+        scene.add(cube);
+        return cube;
     })
-        
-
+    
     animate();
 }
 
@@ -71,31 +51,17 @@ const animate = () => {
     frameHelper.requestNextFrame( animate );
 
     const t = THREE.Math.mapLinear(frameHelper.frameCount, 0, animationFrames, 0, 1);
+
     const ang = t * 2 * Math.PI;
-    camera.position.set(Math.sin(ang) * cameraRad, 0, Math.cos(ang) * cameraRad);
-    camera.lookAt(0, 0, 0);
 
-    const wiggleSz = 15;
-    const wiggles = 1.5;
-    const speed = 5;
-    sphs.map( (sph, i) => {
-        const {x, y, z} = sph.position;
-
-        const normX = THREE.Math.mapLinear(x, -side/2, side/2, 0, Math.PI * 2 * wiggles);
-        const normY = THREE.Math.mapLinear(y, -side/2, side/2, 0, Math.PI * 2 * wiggles);
-        const normZ = THREE.Math.mapLinear(z, -side/2, side/2, 0, Math.PI * 2 * wiggles);
-        
-        const px = THREE.Math.mapLinear(Math.sin(normY + ang * speed) + Math.cos(normZ + ang * speed), -2, 2, -wiggleSz, wiggleSz);
-        const py = THREE.Math.mapLinear(Math.sin(normX + ang * speed) + Math.cos(normZ + ang * speed), -2, 2, -wiggleSz, wiggleSz);
-        const pz = THREE.Math.mapLinear(Math.sin(normX + ang * speed) + Math.cos(normY + ang * speed), -2, 2, -wiggleSz, wiggleSz);
-
-        sph.position.set(pos[i].x + px, pos[i].y + py, pos[i].z + pz);
-    });
+    cubes.map(cube => {
+        cube.rotation.y = ang * cube.userData;
+    })
 
     frameHelper.render(scene, camera);
 
     if(recording && frameHelper.frameCount < animationFrames)
-        frameHelper.saveFrame("bubbles", frameHelper.frameCount);
+        frameHelper.saveFrame("pendulum", frameHelper.frameCount);
 };
 
 
