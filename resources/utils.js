@@ -21,9 +21,11 @@ const randBetween = (start, end) => {
     return THREE.Math.mapLinear(Math.random(), 0, 1, start, end);
 }
 
-const easeInOutQuad = t => { return t<.5 ? 2*t*t : -1+(4-2*t)*t };
-const easeInOutCubic = t => { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 };
-const easeInOutQuint = t => { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t };
+const doWhile = f => f() || doWhile(f);
+
+const easeInOutQuad = t => t<.5 ? 2*t*t : -1+(4-2*t)*t ;
+const easeInOutCubic = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 ;
+const easeInOutQuint = t => t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t ;
 
 module.exports.randBetween = randBetween;
 module.exports.randomUnitVector = randomUnitVector;
@@ -33,3 +35,4 @@ module.exports.repeat = repeat;
 module.exports.easeInOutQuad = easeInOutQuad;
 module.exports.easeInOutCubic = easeInOutCubic;
 module.exports.easeInOutQuint = easeInOutQuint;
+module.exports.doWhile = doWhile;

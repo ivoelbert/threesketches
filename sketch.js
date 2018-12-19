@@ -1,17 +1,14 @@
 const frameHelper = require('./resources/frameHelper.js');
 const mouseHelper = require('./resources/mouseHelper.js');
-const commonFunctions = require('./resources/commonFunctions.js');
+const utils = require('./resources/utils.js');
 const THREE = require('three');
 
-const width = 800, height = 800;
+const width = 600, height = 600;
 const recording = false;
-const animationFrames = 300;
+const animationFrames = 210;
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera( 60, width / height, 0.01, 3000 );
 const cameraRad = 500;
-
-let cubes;
-const lado = 300;
 
 // SETUP
 const init = () => {
@@ -33,49 +30,38 @@ const init = () => {
     const ambient = new THREE.AmbientLight(0xfafafa, 0.2);
     scene.add(ambient);
 
-    fogColor = new THREE.Color(0x000000);
- 
-    scene.background = fogColor;
-    scene.fog = new THREE.FogExp2(fogColor, 1 / 1500);
+    scene.background = new THREE.Color(0xfafafa);
 
+    const geom = new THREE.SphereBufferGeometry(1, 32, 32);
+    const mat = new THREE.MeshPhongMaterial({
+        color: 0xfafafa,
+        shininess: 90,
+    });
 
-
-    const angSum = (w, h, d) => {
-        const vec = new THREE.Vector3(w, h, d);
-        const xToPlane = (Math.PI / 2) - vec.angleTo(new THREE.Vector3(1, 0, 0));
-        const yToPlane = (Math.PI / 2) - vec.angleTo(new THREE.Vector3(0, 1, 0));
-        const zToPlane = (Math.PI / 2) - vec.angleTo(new THREE.Vector3(0, 0, 1));
-        return THREE.Math.radToDeg(xToPlane + yToPlane + zToPlane);
+    const collides = (sph1, sph2) => {
+        const dist = sph1.position.clone().sub(sph2.position);
+        return dist.length() < sph1.scale.x + sph2.scale.x;
     }
 
-    const sphGeom = new THREE.SphereBufferGeometry(1, 32, 32);
-    const muestras = 10;
-    commonFunctions.repeat(muestras, x => {
-        commonFunctions.repeat(muestras, y => {
-            commonFunctions.repeat(muestras, z => {
-                const px = THREE.Math.mapLinear(x, 0, muestras, -lado/2, lado/2);
-                const py = THREE.Math.mapLinear(y, 0, muestras, -lado/2, lado/2);
-                const pz = THREE.Math.mapLinear(z, 0, muestras, -lado/2, lado/2);
+    const randomSphere = () => {
+        const mesh = new THREE.Mesh(geom, mat);
+        mesh.scale.multiplyScalar(utils.randBetween(10, 50));
+        const pos = utils.randomVector().multiplyScalar(utils.randBetween(-150, 150));
+        mesh.position.copy(pos);
+        return mesh;
+    }
 
-                const sum = THREE.Math.mapLinear(angSum(x + 1, y + 1, z + 1), 90, 106, 0, 1);
+    let sphs = [randomSphere()];
+    utils.repeat(11, i => {
+        const sph = utils.doWhile( () => {
+            const sph = randomSphere();
+            const collision = sphs.reduce( (acc, curr) => !collides(curr, sph) && acc, true);
+            return collision ? sph : null;
+        });
+        sphs.push(sph);
+        scene.add(sph);
+    });
 
-                const h = THREE.Math.mapLinear(sum, 0, 1, 0, 0.7);
-                const l = THREE.Math.mapLinear(sum, 0, 1, 0.1, 0.9);
-                const col = new THREE.Color().setHSL(h, 0.9, l);
-                const sphMat = new THREE.MeshLambertMaterial({color: col, transparent: true});
-                const opac = THREE.Math.mapLinear(sum, 0, 1, 0, 0.75);
-                sphMat.opacity = opac;
-                const sph = new THREE.Mesh(sphGeom, sphMat);
-                
-                const scl = THREE.Math.mapLinear(sum, 0, 1, 0.1, 30);
-                sph.scale.setLength(scl);
-                sph.position.set(px, py, pz);
-
-                scene.add(sph);
-            })
-        })  
-    })
-    
     animate();
 }
 
@@ -85,21 +71,19 @@ const animate = () => {
 
     const t = THREE.Math.mapLinear(frameHelper.frameCount, 0, animationFrames, 0, 1);
 
-    const ang = THREE.Math.mapLinear(mouseHelper.mouseX, -1, 1, -Math.PI, Math.PI);
-    const angY = THREE.Math.mapLinear(mouseHelper.mouseY, -1, 1, -Math.PI, Math.PI);
-
+    const ang = t * 2 * Math.PI;
     const camx = Math.cos(ang) * cameraRad;
     const camz = Math.sin(ang) * cameraRad;
-    const camy = Math.sin(angY) * cameraRad;
-    camera.position.set(camx, camy, camz);
+    camera.position.set(camx, 0, camz);
     camera.lookAt(0, 0, 0);
 
     frameHelper.render(scene, camera);
 
     if(recording && frameHelper.frameCount < animationFrames)
-        frameHelper.saveFrame("pendulum", frameHelper.frameCount);
+        frameHelper.saveFrame("esferas", frameHelper.frameCount);
 };
 
 
 // INIT 
 init();
+

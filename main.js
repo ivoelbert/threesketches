@@ -16,7 +16,7 @@ function createWindow () {
     
 
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 800, height: 800, resizable: false, toolbar: false, frame: false, transparent: true});
+    mainWindow = new BrowserWindow({width: 800, height: 800, resizable: false, toolbar: false, frame: true, transparent: true});
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),

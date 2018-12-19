@@ -77,7 +77,7 @@ const saveFrame = (name, f) => {
         sufix = sufix.slice(sufix.length - 4, sufix.length);
     }
 
-    const dataUrl = renderer.domElement.toDataURL("image/jpeg");
+    const dataUrl = renderer.domElement.toDataURL("image/png");
 
     saveDataUrl(dataUrl, name + sufix);
 }
